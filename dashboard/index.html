@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, ranked by what a launch would be worth — and how to farm each one.</p>
+    </div>
+  </div>
+  <div class="snapshot-meta" id="snapshot-meta"></div>
+</header>
+
+<section class="method" id="method">
+  <h2>How the board is priced</h2>
+  <p id="method-text"></p>
+</section>
+
+<nav class="controls" aria-label="Board controls">
+  <div class="tabs" role="tablist">
+    <button id="tab-board" class="tab active" type="button">Pre-token board</button>
+    <button id="tab-live" class="tab" type="button">Already trading</button>
+  </div>
+  <label class="ctl grow">Search
+    <input id="f-search" type="search" placeholder="Protocol name or slug">
+  </label>
+  <label class="ctl">Category
+    <select id="f-category"></select>
+  </label>
+  <label class="ctl">Chain
+    <select id="f-chain"></select>
+  </label>
+  <label class="ctl">Min TVL
+    <select id="f-min">
+      <option value="0">Any</option>
+      <option value="25000000">$25M</option>
+      <option value="50000000">$50M — the floor</option>
+      <option value="100000000">$100M</option>
+      <option value="500000000">$500M</option>
+      <option value="1000000000">$1B</option>
+    </select>
+  </label>
+  <label class="ctl check">
+    <input id="f-watch" type="checkbox"> Watchlist only
+  </label>
+  <label class="ctl">Sort by
+    <select id="f-sort">
+      <option value="implied">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="growth">7d growth</option>
+      <option value="age">Age without a token</option>
+      <option value="name">Name</option>
+    </select>
+  </label>
+</nav>
+
+<p class="stats" id="stats"></p>
+
+<main>
+  <table class="board" id="board-table">
+    <thead>
+      <tr>
+        <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Cat. multiple</th><th class="num">Implied value</th>
+      </tr>
+    </thead>
+    <tbody id="board-body"></tbody>
+  </table>
+  <table class="board hidden" id="live-table">
+    <thead>
+      <tr>
+        <th>Protocol</th><th>Symbol</th><th>Category</th>
+        <th class="num">TVL</th><th class="num">Market cap</th><th class="num">MCap / TVL</th><th class="num">7d</th>
+      </tr>
+    </thead>
+    <tbody id="live-body"></tbody>
+  </table>
+  <p class="empty hidden" id="empty">No protocol matches those filters. Loosen one and the radar sweeps again.</p>
+</main>
+
+<footer>
+  <p id="foot-note"></p>
+</footer>
+
+<div class="scrim hidden" id="scrim"></div>
+<aside class="detail hidden" id="detail" aria-label="Protocol detail"></aside>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
